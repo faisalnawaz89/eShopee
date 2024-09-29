@@ -1,31 +1,30 @@
-const port = 5000;
-const express = require('express')
-const app = express()
-const mongoose = require('mongoose')
-const jwt = require('jsonwebtoken')
-const multer = require('multer')
-const path = require('path')
+require('dotenv').config(); // Load environment variables
+const port = process.env.PORT || 5000;  // Use port from .env or default to 5000
+const express = require('express');
+const app = express();
+const jwt = require('jsonwebtoken');
+const multer = require('multer');
+const path = require('path');
 const cors = require('cors');
+const mongoose = require('./db');  
+app.use(express.json());
+app.use(cors());
 
+// API Creation
+app.listen(port, async () => {
+  try {
+    console.log('Server is running on port:', port);
+  } catch (error) {
+    console.log('Error occurred:', error);
+  }
+});
 
-app.use(express.json())
-app.use(cors())
+app.get('/', (req, res) => {
+  res.send('Express App is Running!');
+});
 
-// Database connetion with mongodb
-mongoose.connect('mongodb+srv://isfaisalnawaz:faisal8919@cluster0.1854h.mongodb.net/eCommerce')
-
-//API Creation
-app.listen(port,(error)=>{
-    if(!error){
-        console.log(`Server is running on ${port}`)
-    }else{
-        console.log(`Error: ${error}`)
-    }
-})
-
-app.get('/',(req,res)=>{
-    res.send(`Express App is Running!`)
-})
+// JWT Secret Example (Using JWT_SECRET from .env)
+const secret = process.env.JWT_SECRET;
 
 //Image Stroge Engine
 const storage = multer.diskStorage({
@@ -218,7 +217,7 @@ app.post('/signup', async(req,res)=>{
             id:user.id
         }
     }
-    const token = jwt.sign(data,'secret_ecom')
+    const token = jwt.sign(data, secret)
     res.json({success:true,token})
 
 })
@@ -230,7 +229,7 @@ const fetchUser = async (req,res,next) => {
         res.status(401).send({errors:"Please authenticate using a valid token"})
     }else{
         try {
-            const data = jwt.verify(token,'secret_ecom')
+            const data = jwt.verify(token, secret)
             req.user = data.user
             next()
         } catch (error) {
@@ -276,7 +275,7 @@ app.post('/login', async(req,res)=>{
                     id:user.id
                 }
             }
-            const token = jwt.sign(data,'secret_ecom') 
+            const token = jwt.sign(data, secret) 
             res.json({success:true,token})
         }else{
             res.json({

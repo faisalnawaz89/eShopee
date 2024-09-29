@@ -9,11 +9,7 @@ const cors = require('cors');
 
 
 app.use(express.json())
-app.use(cors({
-    origin:["https://eshope-backend-24.vercel.app"],
-    method:"POST","GET",
-    credentials:true
-}))
+app.use(cors())
 
 // Database connetion with mongodb
 mongoose.connect('mongodb+srv://isfaisalnawaz:faisal8919@cluster0.1854h.mongodb.net/eCommerce')

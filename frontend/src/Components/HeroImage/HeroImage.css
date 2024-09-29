@@ -1,0 +1,9 @@
+.HeroImage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aliceblue;
+    color: black;
+    height: 350px;
+    margin-bottom: 50px;
+}

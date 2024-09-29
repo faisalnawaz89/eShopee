@@ -1,0 +1,48 @@
+
+.description-tab{
+    margin-top: 5rem;
+}
+
+.description-tab ul{
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    gap: 3px;
+    margin: 0;
+}
+
+.description-tab ul li{
+    padding: 20px 0;
+    background: #eee;
+    text-align: center;
+    width: 150px;
+    border: 1px solid #ddd;
+    transition: all .2s ease-in;
+    cursor: pointer;
+    border-bottom: 0;
+}
+
+.description-tab ul li:active,
+.description-tab ul li:hover{
+    border: 1px solid #ffdbda;
+    background: #eb423fcf;
+    color:#fff;
+    border-bottom: 0;
+}
+
+.description-content {
+    border: 1px solid #ddd;
+    padding: 40px 40px;
+    display: none;
+}
+
+.description-content.open{
+    display: block;
+}
+
+.description-content p{
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}

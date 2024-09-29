@@ -1,0 +1,65 @@
+body{
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.gridX3 {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.logoSrc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.menuItem ul{
+    list-style-type: none;
+    display: flex;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+}
+
+.menuItem ul li a{
+    color: #000;
+    text-decoration: none;
+}
+
+.cartIcon{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cartIcon button{
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 25px;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: all .2s ease-in;
+}
+.cartIcon button:active{
+    background-color: #ddd;
+}
+.cart-count-item{
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: -10px;
+    background: red;
+    width: 20px;
+    height: 20px;
+    line-height: 21px;
+    text-align: center;
+    border-radius: 50%;
+}

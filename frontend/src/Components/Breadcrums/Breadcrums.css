@@ -1,0 +1,14 @@
+.breadcrum {
+    padding: 50px 0;
+}
+
+.breadcrum span {
+    text-transform: capitalize;
+    font-size: 13px;
+    vertical-align: text-top;
+}
+
+.breadcrum img {
+    width: 6px;
+    padding: 0 10px;
+}

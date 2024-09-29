@@ -10,7 +10,7 @@ const cors = require('cors');
 
 app.use(express.json())
 app.use(cors({
-    origin:["https://e-shopee-eight.vercel.app"],
+    origin:["https://eshope-backend-24.vercel.app"],
     method:"POST","GET",
     credentials:true
 }))

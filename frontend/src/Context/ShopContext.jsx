@@ -15,15 +15,16 @@ const ShopContextProvider = ({children}) => {
 
     const [all_product, setAllProduct] = useState([])
     const [cartItems, setCartItems] = useState(getDefaultCart())
+    const baseURL = 'https://eshopeebackend.onrender.com/'
 
     useEffect(()=>{
-        fetch('http://localhost:5000/allproducts')
+        fetch(`${baseURL}allproducts`)
         .then((response)=> response.json())
         .then((data)=> setAllProduct(data))
         .catch((error)=> console.log(error))
 
         if(localStorage.getItem('auth-token')){
-            fetch('http://localhost:5000/getcart',{
+            fetch(`${baseURL}getcart`,{
                 method:"POST",
                 headers:{
                     Accept:'application/form-data',
@@ -41,7 +42,7 @@ const ShopContextProvider = ({children}) => {
     const addToCart = (itemId) => {
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
         if (localStorage.getItem('auth-token')){
-            fetch('http://localhost:5000/addtocart',{
+            fetch(`${baseURL}addtocart`,{
                 method:'POST',
                 headers:{
                     Accept:'application/form-data',
@@ -58,7 +59,7 @@ const ShopContextProvider = ({children}) => {
     const removeToCart = (itemId) => {
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
         if(localStorage.getItem('auth-token')){
-            fetch('http://localhost:5000/removecart',{
+            fetch(`${baseURL}removecart`,{
                 method:'POST',
                 headers:{
                     Accept:'application/form-data',
@@ -99,7 +100,7 @@ const ShopContextProvider = ({children}) => {
         return totalItem;
     }
 
-    const contextValue = {getTotalCartItem, getTotalCartAmount, all_product, cartItems, addToCart, removeToCart}
+    const contextValue = {baseURL, getTotalCartItem, getTotalCartAmount, all_product, cartItems, addToCart, removeToCart}
     return(
         <ShopContext.Provider value={contextValue}>
             {children}

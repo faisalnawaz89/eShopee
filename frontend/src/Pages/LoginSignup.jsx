@@ -1,6 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { ShopContext } from '../Context/ShopContext'
+
+
 
 const LoginSignup = () => {
+
+    const {baseURL} = useContext(ShopContext)
 
     const [state, setSate] = useState('Login')
     const [formData, setFormdata] = useState({
@@ -15,7 +20,7 @@ const LoginSignup = () => {
     const SignUp = async () =>{
         console.log('signup', formData)
         let responseData;
-        await fetch('http://localhost:5000/signup',{
+        await fetch(`${baseURL}signup`,{
             method:'POST',
             headers:{
                 Accept:'application/json',
@@ -35,7 +40,7 @@ const LoginSignup = () => {
     const Login = async () =>{
         let responseData
         console.log('Login', formData)
-        await fetch('http://localhost:5000/login',{
+        await fetch(`${baseURL}login`,{
             method:'POST',
             headers:{
                 Accept:'application/json',

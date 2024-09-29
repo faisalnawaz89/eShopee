@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './NewCollection.css'
 import Item from '../Item/Item'
+import { ShopContext } from '../../Context/ShopContext'
 
 const NewCollection = () => {
 
+  const {baseURL} = useContext(ShopContext)
+
   const [newCollection, setNewCollection] = useState([])
   useEffect(()=>{
-    fetch('http://localhost:5000/newcollections')
+    fetch(`${baseURL}newcollections`)
     .then((response)=> response.json())
     .then((data)=> setNewCollection(data))
     .catch((error)=> console.log(error))

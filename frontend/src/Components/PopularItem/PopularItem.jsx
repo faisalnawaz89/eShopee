@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './PopularItem.css'
 import Item from '../Item/Item'
-import { useSearchParams } from 'react-router-dom'
+import { ShopContext } from '../../Context/ShopContext'
 
 const PopularItem = () => {
+
+  const {baseURL} = useContext(ShopContext)
+
   const [popularCategory, setPopularCategory] = useState([])
 
   useEffect(()=>{
-     fetch('http://localhost:5000/popularcategory')
+     fetch(`${baseURL}popularcategory`)
     .then((response)=> response.json())
     .then((data)=> setPopularCategory(data))
     .catch((error)=> console.log(error))

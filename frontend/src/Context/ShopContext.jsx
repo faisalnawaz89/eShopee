@@ -23,11 +23,11 @@ const ShopContextProvider = ({children}) => {
         .then((response)=> response.json())
         .then((data) => {
             setAllProduct(data)
-            setLoading(true)
+            setLoading(false)
         })
         .catch((error) => {
             console.log(error);
-            setLoading(true);
+            setLoading(false);
         });
 
         if(localStorage.getItem('auth-token')){

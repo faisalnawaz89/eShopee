@@ -5,7 +5,11 @@ import Item from '../Components/Item/Item'
 
 const ShopCategory = (props) => {
 
-  const {all_product} = useContext(ShopContext)
+  const {loading, all_product} = useContext(ShopContext)
+
+  if (loading) {
+    return <div className="spinner"></div>
+  }
 
   return (
     <>

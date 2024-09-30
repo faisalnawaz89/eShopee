@@ -16,12 +16,19 @@ const ShopContextProvider = ({children}) => {
     const [all_product, setAllProduct] = useState([])
     const [cartItems, setCartItems] = useState(getDefaultCart())
     const baseURL = 'https://eshopeebackend.onrender.com/'
+    const [loading, setLoading] = useState(true)
 
     useEffect(()=>{
         fetch(`${baseURL}allproducts`)
         .then((response)=> response.json())
-        .then((data)=> setAllProduct(data))
-        .catch((error)=> console.log(error))
+        .then((data) => {
+            setAllProduct(data)
+            setLoading(false)
+        })
+        .catch((error) => {
+            console.log(error);
+            setLoading(false);
+        });
 
         if(localStorage.getItem('auth-token')){
             fetch(`${baseURL}getcart`,{
@@ -37,7 +44,7 @@ const ShopContextProvider = ({children}) => {
               .catch((error)=> console.log(error))
         }
 
-    },[])
+    },[baseURL])
     
     const addToCart = (itemId) => {
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
@@ -100,7 +107,7 @@ const ShopContextProvider = ({children}) => {
         return totalItem;
     }
 
-    const contextValue = {baseURL, getTotalCartItem, getTotalCartAmount, all_product, cartItems, addToCart, removeToCart}
+    const contextValue = {loading, baseURL, getTotalCartItem, getTotalCartAmount, all_product, cartItems, addToCart, removeToCart}
     return(
         <ShopContext.Provider value={contextValue}>
             {children}

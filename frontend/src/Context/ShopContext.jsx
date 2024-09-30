@@ -15,7 +15,7 @@ const ShopContextProvider = ({children}) => {
 
     const [all_product, setAllProduct] = useState([])
     const [cartItems, setCartItems] = useState(getDefaultCart())
-    const baseURL = 'https://eshopeebackend.onrender.com/'
+    const baseURL = 'https://eshopeebackend.onrender.com/s'
     const [loading, setLoading] = useState(true)
 
     useEffect(()=>{

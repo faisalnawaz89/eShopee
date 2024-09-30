@@ -15,7 +15,7 @@ const ShopContextProvider = ({children}) => {
 
     const [all_product, setAllProduct] = useState([])
     const [cartItems, setCartItems] = useState(getDefaultCart())
-    const baseURL = 'https://eshopeebackend.onrender.com/s'
+    const baseURL = 'https://eshopeebackend.onrender.com/'
     const [loading, setLoading] = useState(true)
 
     useEffect(()=>{
@@ -23,11 +23,11 @@ const ShopContextProvider = ({children}) => {
         .then((response)=> response.json())
         .then((data) => {
             setAllProduct(data)
-            setLoading(false)
+            setLoading(true)
         })
         .catch((error) => {
             console.log(error);
-            setLoading(false);
+            setLoading(true);
         });
 
         if(localStorage.getItem('auth-token')){

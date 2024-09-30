@@ -118,7 +118,7 @@ app.get('/allproducts', async(req,res)=>{
     res.send(products)
 })
 
-//Schema for deleting product from mongoDb
+//Schema for deleting one product at a time from mongoDb
 app.post('/removeproduct', async (req,res)=>{
     await Product.findOneAndDelete({id:req.body.id})
     console.log('Removed')
@@ -127,6 +127,21 @@ app.post('/removeproduct', async (req,res)=>{
         name:req.body.name
     })
 })
+
+//Creating endpoint for delete all products
+// DELETE all products
+app.delete('/deleteAllProducts', async (req, res) => {
+    try {
+      // Delete all products from the Product collection
+      const result = await Product.deleteMany({}); // {} means remove all
+  
+      // Send a success response
+      res.status(200).json({ success: true, message: 'All products deleted successfully', result });
+    } catch (error) {
+      console.error('Error deleting products:', error);
+      res.status(500).json({ success: false, message: 'Failed to delete products', error });
+    }
+});
 
 //Creating API for Edit product
 app.put('/editproduct/:id', async(req,res)=>{

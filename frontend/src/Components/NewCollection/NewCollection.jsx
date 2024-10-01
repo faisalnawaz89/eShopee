@@ -13,7 +13,7 @@ const NewCollection = () => {
     .then((response)=> response.json())
     .then((data)=> setNewCollection(data))
     .catch((error)=> console.log(error))
-  },[])
+  },[baseURL])
 
   return (
     <div className='container'>

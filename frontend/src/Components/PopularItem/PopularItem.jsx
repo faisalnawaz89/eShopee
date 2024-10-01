@@ -14,7 +14,7 @@ const PopularItem = () => {
     .then((response)=> response.json())
     .then((data)=> setPopularCategory(data))
     .catch((error)=> console.log(error))
-  },[])
+  },[baseURL])
 
   return (
     <>

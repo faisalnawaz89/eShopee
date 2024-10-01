@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './item.css'
 import { Link } from 'react-router-dom'
+import { ShopContext } from '../../Context/ShopContext'
+
 const Item = (props) => {
   const {loading} = useContext(ShopContext)
 
   if (loading) {
-
+    console.log(loading)
     return <div className='spinner-container'><div className="spinner"></div></div> 
 
   }else{
@@ -22,7 +24,7 @@ const Item = (props) => {
           </div>
       </div>
     )
-    
+
   }
 
   

@@ -309,4 +309,19 @@ app.post('/login', async(req,res)=>{
     }
 })
 
+
+// Creating endpoint to get user's username
+app.get('/getUserName', fetchUser, async (req, res) => {
+    try {
+        const user = await Users.findById(req.user.id).select('name');
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+        res.json({ success: true, user: { name: user.name } });
+    } catch (error) {
+        console.error('Error fetching user username:', error);
+        res.status(500).json({ success: false, message: 'Server error' });
+    }
+});
+
 //Completed Backend Work!

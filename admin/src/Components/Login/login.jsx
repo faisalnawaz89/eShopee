@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const baseURL = 'https://eshopeebackend.onrender.com';
-  const navigate = useNavigate();
+
+  // const navigate = useNavigate();
   const [formData, setFormdata] = useState({
     email: '',
     password: '',
@@ -15,7 +15,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     let responseData;
-    console.log('Login', formData);
+    // console.log('Login', formData);
 
     try {
       const response = await fetch(`${baseURL}/login`, {
@@ -31,14 +31,16 @@ const Login = () => {
 
       if (responseData.success) {
         localStorage.setItem('auth-token', responseData.token);
-        navigate('/addproduct'); // Redirect to AddProduct page
+        window.location.replace('/addproduct')
       } else {
         alert(responseData.errors);
       }
+      
     } catch (error) {
       console.error('Login error:', error);
     }
-  };
+    
+  }
 
   return (
     <div className='container'>
@@ -60,7 +62,7 @@ const Login = () => {
               type="password"
               placeholder="Password"
             />
-            <button onClick={handleLogin}>Continue</button> {/* Correctly call handleLogin */}
+            <button onClick={handleLogin}>Log In</button> 
           </div>
         </div>
       </div>

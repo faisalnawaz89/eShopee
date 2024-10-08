@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+    const baseURL = 'https://eshopeebackend.onrender.com';
     const [username, setUsername] = useState('Guest'); // Default to 'Guest'
     const [dropdown, setDropdown] = useState(false)
     const navigate = useNavigate();
@@ -9,7 +10,7 @@ const Navbar = () => {
     useEffect(() => {
         const token = localStorage.getItem('auth-token');
         if (token) {
-            fetch('https://eshopeebackend.onrender.com/getUserName', {
+            fetch(`${baseURL}/getUserName`,{
                 method: 'GET',
                 headers: {
                     'auth-token': token,

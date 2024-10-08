@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
 const ListProduct = () => {
-
+    const baseURL = 'https://eshopeebackend.onrender.com';
     const [allProducts, setAllproducts] = useState([])
     const fetchInfo = async () => {
-        await fetch('http://localhost:5000/allproducts')
+        await fetch(`${baseURL}/allproducts`)
         .then((resp)=>resp.json())
         .then((data)=>{setAllproducts(data)})
         .catch((error)=>{alert(error)})
@@ -15,7 +15,7 @@ const ListProduct = () => {
     },[])
 
     const removeProduct = async (id) => {
-        await fetch('http://localhost:5000/removeproduct',{
+            await fetch(`${baseURL}/removeproduct`,{
             method: 'POST',
             headers:{
                 Accept:'application/json','Content-Type':'application/json',

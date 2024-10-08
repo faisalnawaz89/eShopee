@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import upload from '../../Assets/upload.png'
 
 const AddProduct = () => {
-
+    const baseURL = 'https://eshopeebackend.onrender.com';
     const [image, setImage] = useState(false)
     const [msg, setMsg] = useState('')
     const imageHandler = (e) => {
@@ -24,7 +24,7 @@ const AddProduct = () => {
         let product = productDetails
         let formData = new FormData()
         formData.append('product',image)
-        await fetch('http://localhost:5000/upload',{
+        await fetch(`${baseURL}/upload`,{
             method:'POST',
             headers:{
                 Accept:'application/json'
@@ -35,7 +35,7 @@ const AddProduct = () => {
        
         if(responseData.success){
             product.image = responseData.image_url
-            await fetch('http://localhost:5000/addproduct',{
+                await fetch(`${baseURL}/addproduct`,{
                 method:'POST',
                 headers:{
                     Accept:'application/json', 'Content-Type':'application/json'

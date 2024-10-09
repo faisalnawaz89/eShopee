@@ -1,19 +1,19 @@
 import React from 'react';
-import Sidebar from '../../Sidebar/Sidebar';
+import Sidebar from '../Sidebar/Sidebar';
 import { Route, Routes } from 'react-router-dom';
-import AddProduct from '../../AddProduct/AddProduct';
-import ListProduct from '../../ListProduct/ListProduct';
-import Login from '../../Login/Login';
-import PrivateRoute from '../../PrivateRoute/PrivateRoute';
+import AddProduct from '../AddProduct/AddProduct';
+import ListProduct from '../ListProduct/ListProduct';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import Login from '../Login/Login';
+
+
 
 const Admin = () => {
   return (
     <div className='admin'>
       <Sidebar />
       <Routes>
-        {/* Login route */}
-        <Route path="/login" element={<Login />} />
-        {/* Protected routes */}
+        <Route path="/login" element={<Login/>} />
         <Route path="/addproduct" element={<PrivateRoute element={<AddProduct />} />} />
         <Route path="/listproduct" element={<PrivateRoute element={<ListProduct />} />} />
       </Routes>

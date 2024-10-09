@@ -1,6 +1,6 @@
 import './Components/GlobalStyle/GlobalStyle.css';
 import Navbar from './Components/Navbar/Navbar';
-import Admin from './Components/Pages/Admin/Admin';
+import Admin from './Components/Admin/Admin';
 
 // eShopee Admin Page
 export default function App() {

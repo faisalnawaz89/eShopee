@@ -4,7 +4,6 @@ const Login = () => {
   
   const baseURL = 'https://eshopeebackend.onrender.com';
 
-  // const navigate = useNavigate();
   const [formData, setFormdata] = useState({
     email: '',
     password: '',

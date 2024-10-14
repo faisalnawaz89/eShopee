@@ -14,7 +14,7 @@ const Admin = () => {
     <div className='admin'>
       <Sidebar />
       <Routes>
-        <Route path="/login" element={<Login/>} />
+        <Route exact path="/login" element={<Login/>} />
         <Route path="/addproduct" element={<PrivateRoute element={<AddProduct />} />} />
         <Route path="/listproduct" element={<PrivateRoute element={<ListProduct />} />} />
       </Routes>

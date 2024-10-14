@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import upload from '../../Assets/upload.png'
 
+//Add Product 
 const AddProduct = () => {
     const baseURL = 'https://eshopeebackend.onrender.com';
     const [image, setImage] = useState(false)

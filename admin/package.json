@@ -1,5 +1,6 @@
 {
   "name": "admin",
+  "homepage": "https://eshopadmin.onrender.com/login",
   "private": true,
   "version": "0.0.0",
   "type": "module",
